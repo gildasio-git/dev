@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload de Imagens</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            background-image: url('caminho/para/sua/imagem.jpg'); /* Substitua pelo caminho da sua imagem */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header {
+            z-index: 2; /* Garante que o cabeçalho esteja acima da overlay */
+            text-align: center;
+            background-color: rgba(0, 123, 255, 0.8); /* Azul semi-transparente */
+            color: white;
+            padding: 10px 0;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 0; /* Fixa o cabeçalho no topo */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7); /* Camada branca semi-transparente */
+            z-index: 1; /* Garante que a camada sobreponha a imagem de fundo */
+        }
+
+        .container {
+            position: relative;
+            z-index: 2; /* Garante que o conteúdo esteja acima da camada branca */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%; /* Ajuste para ser responsivo */
+            max-width: 400px; /* Limita a largura máxima */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="file"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px; /* Aumenta a legibilidade */
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%; /* Botão ocupa toda a largura */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .link {
+            margin-top: 15px;
+            display: inline-block;
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="header">
+        <h2>Terceira Igreja Batista</h2>
+        <p>Seja bem-vindo! Envie suas imagens de avisos.</p>
+    </div>
+    <div class="container">
+        <h1>Enviar Imagem</h1>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            <label for="title">Título:</label>
+            <input type="text" name="title" required>
+        
+            <label for="image">Escolher imagem:</label>
+            <input type="file" name="image" accept="image/*" required>
+        
+            <label for="status">Status:</label>
+           
+
+            <select name="status" required>
+                <option value="ativo">Ativo</option>
+                <option value="inativo">Inativo</option>
+            </select>
+            <br>
+            <input type="submit" value="Enviar">
+            <br>
+
+        </form>
+        <a class="link" href="carousel.php">Ver Avisos</a><b></br>
+        <a href="desativar.php?id=<?php echo $row['id']; ?>">Desativar</a>
+    </div>
+</body>
+</html>
