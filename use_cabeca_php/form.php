@@ -6,6 +6,7 @@
     <title>ABDUCAÇÃO</title>
 </head>
 <body>
+   <!--Formulário -->
     <form id="cadastro" method="POST" action="report.php">
     <label for="Nome"></label>
        Nome: <input type="text" name="nome"><br>
